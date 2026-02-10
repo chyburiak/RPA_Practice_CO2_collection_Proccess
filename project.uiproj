@@ -1,0 +1,6 @@
+{
+  "Name": "CO2_Collect_Proccess",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "Main.xaml"
+}
