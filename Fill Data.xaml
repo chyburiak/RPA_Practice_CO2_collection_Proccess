@@ -119,9 +119,8 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Component Name: Excel.Workbook - None - Write Range&#xA;Description: Fill Document with Data&#xA;Pre Condition: Input Data Exist&#xA;Post Condition: Output File Exist" DisplayName="Fill_Data" sap:VirtualizedContainerService.HintSize="1579.811320754717,2841.056603773585" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Component Name: Excel.Workbook - None - Write Range&#xA;Description: Fill Document with Data&#xA;Pre Condition: Input Data Exist&#xA;Post Condition: Output File Exist" DisplayName="Fill_Data" sap:VirtualizedContainerService.HintSize="1403.2075471698113,2841.056603773585" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="Data\Output\report.xlsx" Name="str_FilePath" />
       <Variable x:TypeArguments="x:String" Name="pComponentName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -236,7 +235,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:FileExistsX DisplayName="Output File Exists" Exists="[pPostConditionExists]" sap:VirtualizedContainerService.HintSize="415.6981132075471,160.30188679245282" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="[str_FilePath]" />
+              <ui:FileExistsX DisplayName="Output File Exists" Exists="[pPostConditionExists]" sap:VirtualizedContainerService.HintSize="415.6981132075471,160.30188679245282" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="[in_FilePath]" />
             </Sequence>
           </ActivityAction>
         </ui:RetryScope.ActivityBody>
