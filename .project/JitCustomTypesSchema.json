@@ -1,0 +1,51 @@
+{
+  "exportedBy": null,
+  "bundleHash": null,
+  "version": "1.0.0.0",
+  "jitAssemblyCompilerCommands": [
+    {
+      "providerName": "TypedDataTable",
+      "typedDataTableDto": {
+        "id": 1,
+        "idRef": "NExtractDataGeneric`1_1",
+        "hash": "NExtractDataGeneric`1_1|DataTable|FLa4aGhU6FmpaCtMCadghW7Idq6BT7amiNoLiqaVs94",
+        "dataType": "System.Data.DataTable, System.Data.Common",
+        "columns": [
+          {
+            "columnName": "Manufacturer",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Model",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Description",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Description Url",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Fuel type",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "CO2 g/km (Weighted for PHEVs)",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Imperial combined fuel consumption",
+            "dataType": "System.String, System.Private.CoreLib"
+          }
+        ]
+      },
+      "entityAssemblyKey": {
+        "name": "Studio.Generated.TypedDataTable1",
+        "hash": "NExtractDataGeneric`1_1|DataTable|FxqqOxxl6rWezEVks29QSkYQmfuEmRCpLPyEMSMWec4",
+        "assemblyName": "Studio.Generated.TypedDataTable1"
+      }
+    }
+  ]
+}
