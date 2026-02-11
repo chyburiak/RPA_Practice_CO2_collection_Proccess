@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Fill_Data" this:Fill_Data.in_SheetName="Sheet1" this:Fill_Data.in_FilePath="Data\Input\report.xlsx" this:Fill_Data.iDefaultDelay="15000" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Fill_Data" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_SheetName" Type="InArgument(x:String)" />
     <x:Property Name="in_FilePath" Type="InArgument(x:String)" />
@@ -116,15 +116,12 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Component Name: Excel.Workbook - None - Write Range&#xA;Description: Fill Document with Data&#xA;Pre Condition: Input File Exist&#xA;Post Condition: Output File Exist" DisplayName="Fill_Data" sap:VirtualizedContainerService.HintSize="1579.811320754717,1476.2264150943395" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Component Name: Excel.Workbook - None - Write Range&#xA;Description: Fill Document with Data&#xA;Pre Condition: Input Data Exist&#xA;Post Condition: Output File Exist" DisplayName="Fill_Data" sap:VirtualizedContainerService.HintSize="1579.811320754717,2841.056603773585" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="str_FilePath">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">Data\Output\report.xlsx</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="Data\Output\report.xlsx" Name="str_FilePath" />
       <Variable x:TypeArguments="x:String" Name="pComponentName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -140,27 +137,32 @@
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">["Excel.Workbook - None - Write Range"]</InArgument>
       </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Sequence DisplayName="Pre Condition" sap:VirtualizedContainerService.HintSize="487.2452830188679,57.056603773584904" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Pre Condition" sap:VirtualizedContainerService.HintSize="487.2452830188679,939.1698113207547" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="pPreConditionExists" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:RetryScope RetriedExceptionsLogLevel="{x:Null}" ContinueOnError="False" DisplayName="Retry Pre Condition Check Scope" sap:VirtualizedContainerService.HintSize="452.8301886792452,57.056603773584904" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="3" RetryInterval="[TimeSpan.FromSeconds(iDefaultDelay / 1000)]">
+      <ui:RetryScope ContinueOnError="False" DisplayName="Retry Pre Condition Check Scope" sap:VirtualizedContainerService.HintSize="452.8301886792452,515.3207547169811" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Info" RetryInterval="[TimeSpan.FromSeconds(iDefaultDelay / 1000)]">
         <ui:RetryScope.ActivityBody>
           <ActivityAction>
-            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450.1132075471698,399.3962264150943" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450.1132075471698,230.0377358490566" sap2010:WorkflowViewState.IdRef="Sequence_11">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:FileExistsX DisplayName="Input File Exists" Exists="[pPreConditionExists]" sap:VirtualizedContainerService.HintSize="415.6981132075471,169.35849056603772" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_FilePath]" />
               <Assign DisplayName="Assign isNotDataTableEmpty" sap:VirtualizedContainerService.HintSize="415.6981132075471,166.64150943396226" sap2010:WorkflowViewState.IdRef="Assign_5">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Boolean">[pPreConditionExists]</OutArgument>
@@ -179,7 +181,7 @@
         </ui:RetryScope.Condition>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -205,18 +207,17 @@
         </If.Else>
       </If>
     </Sequence>
-    <Sequence DisplayName="Do Work" sap:VirtualizedContainerService.HintSize="487.2452830188679,57.056603773584904" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Do Work" sap:VirtualizedContainerService.HintSize="487.2452830188679,402.1132075471698" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log Message work" sap:VirtualizedContainerService.HintSize="415.6981132075471,172.0754716981132" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[pComponentName + &quot; Start Work&quot;]" />
-      <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[in_dt_Data]" DisplayName="Write in_dt_Data into in_FilePath" sap:VirtualizedContainerService.HintSize="415.6981132075471,147.62264150943395" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_SheetName]" WorkbookPath="[in_FilePath]" />
-      <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Output" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="415.6981132075471,182.94339622641508" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_FilePath]" />
+      <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[in_dt_Data]" DisplayName="Write in_dt_Data into in_FilePath" sap:VirtualizedContainerService.HintSize="415.6981132075471,138.56603773584905" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_SheetName]" WorkbookPath="[in_FilePath]" />
     </Sequence>
-    <Sequence DisplayName="Post Condition Check" sap:VirtualizedContainerService.HintSize="487.2452830188679,932.8301886792452" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Post Condition Check" sap:VirtualizedContainerService.HintSize="487.2452830188679,1070.4905660377358" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="pPostConditionExists" />
       </Sequence.Variables>
@@ -226,7 +227,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:RetryScope RetriedExceptionsLogLevel="{x:Null}" ContinueOnError="False" DisplayName="Retry Post-Condition Check Scope" sap:VirtualizedContainerService.HintSize="452.8301886792452,508.9811320754717" sap2010:WorkflowViewState.IdRef="RetryScope_2" LogRetriedExceptions="True" NumberOfRetries="3" RetryInterval="[TimeSpan.FromSeconds(iDefaultDelay / 1000)]">
+      <ui:RetryScope ContinueOnError="False" DisplayName="Retry Post-Condition Check Scope" sap:VirtualizedContainerService.HintSize="452.8301886792452,508.9811320754717" sap2010:WorkflowViewState.IdRef="RetryScope_2" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Info" RetryInterval="[TimeSpan.FromSeconds(iDefaultDelay / 1000)]">
         <ui:RetryScope.ActivityBody>
           <ActivityAction>
             <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450.1132075471698,223.69811320754715" sap2010:WorkflowViewState.IdRef="Sequence_14">
@@ -241,11 +242,17 @@
         </ui:RetryScope.ActivityBody>
         <ui:RetryScope.Condition>
           <ActivityFunc x:TypeArguments="x:Boolean">
-            <ui:CheckFalse ErrorMessage="{x:Null}" DisplayName="Check if pPostConditionExists is False" Expression="[pPostConditionExists]" sap:VirtualizedContainerService.HintSize="426.566037735849,128.60377358490564" sap2010:WorkflowViewState.IdRef="CheckFalse_2" />
+            <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True" Expression="[pPostConditionExists]" sap:VirtualizedContainerService.HintSize="426.566037735849,128.60377358490564" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
           </ActivityFunc>
         </ui:RetryScope.Condition>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:RetryScope>
-      <If Condition="[pPostConditionExists = False]" DisplayName="If post conditions fails" sap:VirtualizedContainerService.HintSize="452.8301886792452,332.377358490566" sap2010:WorkflowViewState.IdRef="If_2">
+      <If Condition="[pPostConditionExists = False]" DisplayName="If post conditions fails" sap:VirtualizedContainerService.HintSize="452.8301886792452,470.03773584905656" sap2010:WorkflowViewState.IdRef="If_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -256,12 +263,13 @@
           <Throw DisplayName="Throw exception post condition" Exception="[New Exception (pComponentName &amp; &quot; - Post-Condition could not be found&quot;)]" sap:VirtualizedContainerService.HintSize="450.1132075471698,89.66037735849056" sap2010:WorkflowViewState.IdRef="Throw_2" />
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450.1132075471698,92.37735849056604" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450.1132075471698,230.0377358490566" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message work" sap:VirtualizedContainerService.HintSize="415.6981132075471,166.64150943396226" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[pComponentName + &quot; End Work&quot;]" />
           </Sequence>
         </If.Else>
       </If>
@@ -273,6 +281,12 @@
       <Assign.Value>
         <InArgument x:TypeArguments="x:Boolean">[True]</InArgument>
       </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </Assign>
   </Sequence>
 </Activity>

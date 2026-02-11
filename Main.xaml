@@ -31,6 +31,10 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Linq.Expressions</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -80,12 +84,31 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1585.811320754717,734.299685534591" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1585.811320754717,816.7147798742137" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isSuccess" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Data" />
+      <Variable x:TypeArguments="x:String" Name="str_FilePath">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">Data\Output\report.xlsx</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="str_SheetName">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">Sheet1</Literal>
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -95,8 +118,8 @@
     <ui:BuildDataTable DataTable="[dt_Data]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="450.1132075471698,91.47169811320754" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Manufacturer&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Model&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Description&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Fuel_x0020_type&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CO2_x0020_g_x002F_km_x0020__x0028_Weighted_x0020_for_x0020_PHEVs_x0029_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Imperial_x0020_combined_x0020_fuel_x0020_consumption&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Manufacturer&gt;ABARTH&lt;/Manufacturer&gt;&#xA;    &lt;Model&gt;500e MY25&lt;/Model&gt;&#xA;    &lt;Description&gt;114kW Electric&lt;/Description&gt;&#xA;    &lt;Fuel_x0020_type&gt;Electricity&lt;/Fuel_x0020_type&gt;&#xA;    &lt;CO2_x0020_g_x002F_km_x0020__x0028_Weighted_x0020_for_x0020_PHEVs_x0029_&gt;0&lt;/CO2_x0020_g_x002F_km_x0020__x0028_Weighted_x0020_for_x0020_PHEVs_x0029_&gt;&#xA;    &lt;Imperial_x0020_combined_x0020_fuel_x0020_consumption&gt;0&lt;/Imperial_x0020_combined_x0020_fuel_x0020_consumption&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Manufacturer&gt;TOYOTA&lt;/Manufacturer&gt;&#xA;    &lt;Model&gt;C-HR Plug-in&lt;/Model&gt;&#xA;    &lt;Description&gt;Design 2.0 FWD Plug-in, Bi-tone MY25&lt;/Description&gt;&#xA;    &lt;Fuel_x0020_type&gt;Electricity / Petrol&lt;/Fuel_x0020_type&gt;&#xA;    &lt;CO2_x0020_g_x002F_km_x0020__x0028_Weighted_x0020_for_x0020_PHEVs_x0029_&gt;19&lt;/CO2_x0020_g_x002F_km_x0020__x0028_Weighted_x0020_for_x0020_PHEVs_x0029_&gt;&#xA;    &lt;Imperial_x0020_combined_x0020_fuel_x0020_consumption&gt;353.1&lt;/Imperial_x0020_combined_x0020_fuel_x0020_consumption&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Manufacturer&gt;BMW&lt;/Manufacturer&gt;&#xA;    &lt;Model&gt;X5&lt;/Model&gt;&#xA;    &lt;Description&gt;X5 xDrive50e M Sport&lt;/Description&gt;&#xA;    &lt;Fuel_x0020_type&gt;Electricity / Petrol&lt;/Fuel_x0020_type&gt;&#xA;    &lt;CO2_x0020_g_x002F_km_x0020__x0028_Weighted_x0020_for_x0020_PHEVs_x0029_&gt;20&lt;/CO2_x0020_g_x002F_km_x0020__x0028_Weighted_x0020_for_x0020_PHEVs_x0029_&gt;&#xA;    &lt;Imperial_x0020_combined_x0020_fuel_x0020_consumption&gt;282.2&lt;/Imperial_x0020_combined_x0020_fuel_x0020_consumption&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Fill Data - Invoke Workflow File (Fill Data.xaml)" sap:VirtualizedContainerService.HintSize="450.1132075471698,171.16981132075472" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Fill Data.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Sheet1</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">Data\Input\report.xlsx</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[str_SheetName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[str_FilePath]</InArgument>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Data">[dt_Data]</InArgument>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="oSuccess">[isSuccess]</OutArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="iMaxTimeoutLoops">15000</InArgument>
